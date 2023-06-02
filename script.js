@@ -1,11 +1,12 @@
 class MyButton extends HTMLElement {
   constructor() {
     super();
+    this.shadow = this.attachShadow({ mode: "open" });
   }
-
   connectedCallback() {
-    console.log("i am connected");
-    console.log("Inner HTML", this.innerHTML);
+    const button = `
+   <button>${this.innerHTML}</button>`;
+    this.innerHTML = button;
   }
 
   attributeChangedCallBack() {}
