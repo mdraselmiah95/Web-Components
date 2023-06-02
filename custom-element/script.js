@@ -5,11 +5,21 @@ class WordCount extends HTMLParagraphElement {
     console.log(this);
   }
 
-  customElements() {
+  connectedCallback() {
+    const count = this.#countWords(this.parentNode);
+
     const span = document.createElement("span");
-    span.textContent = `Words = `;
+    span.textContent = `Words = ` + count;
 
     this.shadow.append(span);
+  }
+
+  #countWords(node) {
+    const text = node.innerText || node.textContent;
+    return text
+      .trim()
+      .split(/\s+/g)
+      .filter((a) => a.trim().length > 0).length;
   }
 }
 
