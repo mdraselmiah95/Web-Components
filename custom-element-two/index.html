@@ -9,10 +9,24 @@
   <body>
     <h1>Web Component - Template</h1>
 
-    <todo-item checked="true">Item One</todo-item>
-    <todo-item checked="true">Item Two</todo-item>
-    <todo-item checked="true">Item Three</todo-item>
+    <todo-item checked="true">
+      Item One
+      <small slot="small">Small Text</small>
+    </todo-item>
+    <todo-item checked="true">
+      Item Two
+      <small slot="small">Web Component is cool</small>
+    </todo-item>
+    <todo-item checked="false">Item Three</todo-item>
 
     <script src="./script.js"></script>
+    <script>
+      const firstItem = document.querySelector("todo-item");
+      let checked = true;
+      setInterval(() => {
+        checked = !checked;
+        firstItem.setAttribute("checked", checked);
+      }, 2000);
+    </script>
   </body>
 </html>
